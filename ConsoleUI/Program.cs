@@ -10,8 +10,7 @@ namespace ConsoleUI
         static void Main(string[] args)
         {
             //ürün listeledik
-            InMemoryProductDal ınMemoryProductDal = new InMemoryProductDal();
-            ProductManager productManager = new ProductManager(ınMemoryProductDal);
+            ProductManager productManager = new ProductManager(new InMemoryProductDal());
             void Listele()
             {
                 foreach (var p in productManager.GetAll())
@@ -31,14 +30,14 @@ namespace ConsoleUI
             {
                 ProductID = 6, CategoryID = 3, ProductName = "Laptop", UnitPrice = 6500, UnitsInStock = 7
             };
-            ınMemoryProductDal.Add(product);
+            productManager.Add(product);
             Listele();
             
             Console.WriteLine("***********************************************************************");
             Console.WriteLine("***********************************************************************");
             Console.WriteLine("***********************************************************************");
-            
-            ınMemoryProductDal.Delete(product);
+
+            productManager.Delete(product);
             Listele();
 
 
