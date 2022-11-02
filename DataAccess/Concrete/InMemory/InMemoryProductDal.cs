@@ -3,6 +3,7 @@ using Entities.Concrete;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Linq.Expressions;
 using System.Text;
 
 namespace DataAccess.Concrete.InMemory
@@ -60,6 +61,16 @@ namespace DataAccess.Concrete.InMemory
             //Parametre olarak gönderdiğimiz categoryId ile _product içindeki ürünlerin categoryId si eşit olanları
             //bir listeye aktardı ve return etti
             //Manule olarak bir liste oluşturup da atabilirdik ama LİNQ kullandık
+        }
+
+        public List<Product> GetAll(Expression<Func<Product, bool>> filter = null)
+        {
+            throw new NotImplementedException();
+        }
+
+        public Product Get(Expression<Func<Product, bool>> filter)
+        {
+            throw new NotImplementedException();
         }
     }
 }

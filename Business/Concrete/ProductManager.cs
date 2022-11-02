@@ -20,12 +20,7 @@ namespace Business.Concrete
             //Kodlar--Gereksinimleri sağlıyorsa listeleyecek. Mesela Ürünün fiyatı 50tl altındaysa burda listeleyecek
             return _productDal.GetAll();
         }
-        public List<Product> GetAllByCategory(int id)
-        {
-            //işlemler
-            return _productDal.GetAllByCategory(id);
-        }
-
+        
         public void Add(Product product)
         {
             _productDal.Add(product);
@@ -41,6 +36,14 @@ namespace Business.Concrete
             _productDal.Update(product);
         }
 
+        public List<Product> GetAllByCategoryId(int id)
+        {
+            return _productDal.GetAll(p=>p.CategoryID==id);
+        }
 
+        public List<Product> GetAllUnitPrice(decimal min, decimal max)
+        {
+            return _productDal.GetAll(p=>p.UnitPrice>=min && p.UnitPrice<=max);
+        }
     }
 }
