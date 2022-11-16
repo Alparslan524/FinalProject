@@ -12,7 +12,7 @@ namespace ConsoleUI
         {
             //ürün listeledik
             ProductManager productManager = new ProductManager(new EfProductDal());
-            void ListeleGetAll()
+            void UrunListeleGetAll()
             {
                 foreach (var p in productManager.GetAll())
                 {
@@ -20,12 +20,12 @@ namespace ConsoleUI
                     "\n" + "Ürün Stoğu: " + p.UnitsInStock + "\n" + "******************");
                 }
             };
-            //ListeleGetAll();
-            
+            //UrunListeleGetAll();
 
 
 
-            void ListeleGetAllUnitPrice(decimal min ,decimal max)
+
+            void UrunListeleGetAllUnitPrice(decimal min ,decimal max)
             {
                 foreach (var p in productManager.GetAllUnitPrice(min,max))
                 {
@@ -33,9 +33,10 @@ namespace ConsoleUI
                     "\n" + "Ürün Stoğu: " + p.UnitsInStock + "\n" + "******************");
                 }
             };
-            //ListeleGetAllUnitPrice(50,100);
+            //UrunListeleGetAllUnitPrice(50,100);
 
-            void ListeleGetAllByCategoryId(int id)
+
+            void UrunListeleGetAllByCategoryId(int id)
             {
                 foreach (var p in productManager.GetAllByCategoryId(id))
                 {
@@ -43,7 +44,40 @@ namespace ConsoleUI
                     "\n" + "Ürün Stoğu: " + p.UnitsInStock + "\n" + "******************");
                 }
             };
-            //ListeleGetAllByCategoryId(2);
+            //UrunListeleGetAllByCategoryId(2);
+
+
+            CategoryManager categoryManager = new CategoryManager(new EfCategoryDal());
+            void CategoryListele()
+            {
+                foreach (var c in categoryManager.GetAll())
+                {
+                    Console.WriteLine("Category Adı: " + c.CategoryName);
+                }
+            };
+            //CategoryListele();
+
+
+            void UrunListe2leGetAll()
+            {
+                foreach (var p in productManager.GetProductDetailDtos())
+                {
+                    Console.WriteLine("Ürün Adı: " + p.ProductName +"\n" 
+                        + "Category İsmi: " + p.CategoryName + "\n" + "******************");//Sadece DTO ya eklediklerimizi yazabildik
+                                                                                            //yani productıd-productname-categoryname-unitinstock yazabiliriz.
+                                                                                            //çünkü .GetProductDetailDtos çağırdık
+                }
+            };
+            UrunListe2leGetAll();
+
+
+
+
+
+
+
+
+
 
 
 
