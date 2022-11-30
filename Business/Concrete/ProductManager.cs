@@ -1,4 +1,6 @@
 ﻿using Business.Abstract;
+using Business.Constants;
+using Core.Utilities.Results;
 using DataAccess.Abstract;
 using Entities.Concrete;
 using Entities.DTOs;
@@ -15,41 +17,59 @@ namespace Business.Concrete
         {
             _productDal = productDal;
         }
-
-        public List<Product> GetAll()
+        public IResult Add(Product product)
         {
-            //Kodlar--Gereksinimleri sağlıyorsa listeleyecek. Mesela Ürünün fiyatı 50tl altındaysa burda listeleyecek
-            return _productDal.GetAll();
-        }
-        
-        public void Add(Product product)
-        {
+            if (product.ProductName.Length<2)
+            {
+                return new ErrorResult(Messages.ProductNameInvalid);//magic string
+            }
             _productDal.Add(product);
+            return new SuccessResult(Messages.ProductAdded); //true ve ürün eklendi döndürür
+            //return new SuccessResult(); true döndürür
         }
 
-        public void Delete(Product product)
+        public IResult Delete(Product product)
         {
             _productDal.Delete(product);
+            return new SuccessResult(Messages.ProductDeleted);
         }
 
-        public void Update(Product product)
+        public IResult Update(Product product)
         {
             _productDal.Update(product);
+            return new SuccessResult(Messages.ProductUpdated);
         }
 
-        public List<Product> GetAllByCategoryId(int id)
+
+
+        public IDataResult<List<Product>> GetAll()
         {
-            return _productDal.GetAll(p=>p.CategoryID==id);
+            //Kodlar--Gereksinimleri sağlıyorsa listeleyecek. Mesela Ürünün fiyatı 50tl altındaysa burda listeleyecek
+            if (DateTime.Now.Hour==22)
+            {
+                return new ErrorDataResult<List<Product>>(Messages.MaintenanceTime);
+            }
+            
+            return new SuccessDataResult<List<Product>>(_productDal.GetAll(),Messages.ProductListed);
+        }
+        public IDataResult<List<Product>> GetAllByCategoryId(int id)
+        {
+            return new SuccessDataResult<List<Product>>(_productDal.GetAll(p=>p.CategoryID==id),Messages.ListedByCategoryID);
         }
 
-        public List<Product> GetAllUnitPrice(decimal min, decimal max)
+        public IDataResult<List<Product>> GetAllUnitPrice(decimal min, decimal max)
         {
-            return _productDal.GetAll(p=>p.UnitPrice>=min && p.UnitPrice<=max);
+            return new SuccessDataResult<List<Product>>(_productDal.GetAll(p=>p.UnitPrice>=min && p.UnitPrice<=max),Messages.ListedByUnitPrice);
         }
 
-        public List<ProductDetailDto> GetProductDetailDtos()
+        public IDataResult<List<ProductDetailDto>> GetProductDetailDtos()
         {
-            return _productDal.GetProductDetailDtos();
+            return new SuccessDataResult<List<ProductDetailDto>>(_productDal.GetProductDetailDtos(),Messages.ProductDetailListed);
+        }
+
+        public IDataResult<Product> GetById(int productId)
+        {
+            return new SuccessDataResult<Product>(_productDal.Get(p=>p.ProductID == productId),Messages.ListedById);
         }
     }
 }

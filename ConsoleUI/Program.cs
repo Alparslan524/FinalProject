@@ -10,11 +10,31 @@ namespace ConsoleUI
     {
         static void Main(string[] args)
         {
-            //ürün listeledik
+
             ProductManager productManager = new ProductManager(new EfProductDal());
+
+            var result = productManager.GetAll();
+            if (result.Success==true)
+            {
+                foreach (var p in productManager.GetAll().Data)
+                {
+                    Console.WriteLine("Ürün Adı: " + p.ProductName + "\n" + "Ürün Fiyatı: " + p.UnitPrice +
+                    "\n" + "Ürün Stoğu: " + p.UnitsInStock + "\n" + "******************");
+                }
+                Console.WriteLine(result.Message);
+            }
+            else
+            {
+                Console.WriteLine(result.Message);
+            }
+
+
+            
+            
+            
             void UrunListeleGetAll()
             {
-                foreach (var p in productManager.GetAll())
+                foreach (var p in productManager.GetAll().Data)
                 {
                     Console.WriteLine("Ürün Adı: " + p.ProductName + "\n" + "Ürün Fiyatı: " + p.UnitPrice +
                     "\n" + "Ürün Stoğu: " + p.UnitsInStock + "\n" + "******************");
@@ -22,12 +42,9 @@ namespace ConsoleUI
             };
             //UrunListeleGetAll();
 
-
-
-
             void UrunListeleGetAllUnitPrice(decimal min ,decimal max)
             {
-                foreach (var p in productManager.GetAllUnitPrice(min,max))
+                foreach (var p in productManager.GetAllUnitPrice(min,max).Data)
                 {
                     Console.WriteLine("Ürün Adı: " + p.ProductName + "\n" + "Ürün Fiyatı: " + p.UnitPrice +
                     "\n" + "Ürün Stoğu: " + p.UnitsInStock + "\n" + "******************");
@@ -35,17 +52,15 @@ namespace ConsoleUI
             };
             //UrunListeleGetAllUnitPrice(50,100);
 
-
             void UrunListeleGetAllByCategoryId(int id)
             {
-                foreach (var p in productManager.GetAllByCategoryId(id))
+                foreach (var p in productManager.GetAllByCategoryId(id).Data)
                 {
                     Console.WriteLine("Ürün Adı: " + p.ProductName + "\n" + "Ürün Fiyatı: " + p.UnitPrice +
                     "\n" + "Ürün Stoğu: " + p.UnitsInStock + "\n" + "******************");
                 }
             };
             //UrunListeleGetAllByCategoryId(2);
-
 
             CategoryManager categoryManager = new CategoryManager(new EfCategoryDal());
             void CategoryListele()
@@ -57,10 +72,9 @@ namespace ConsoleUI
             };
             //CategoryListele();
 
-
             void UrunListe2leGetAll()
             {
-                foreach (var p in productManager.GetProductDetailDtos())
+                foreach (var p in productManager.GetProductDetailDtos().Data)
                 {
                     Console.WriteLine("Ürün Adı: " + p.ProductName +"\n" 
                         + "Category İsmi: " + p.CategoryName + "\n" + "******************");//Sadece DTO ya eklediklerimizi yazabildik
@@ -68,18 +82,7 @@ namespace ConsoleUI
                                                                                             //çünkü .GetProductDetailDtos çağırdık
                 }
             };
-            UrunListe2leGetAll();
-
-
-
-
-
-
-
-
-
-
-
+            //UrunListe2leGetAll();
 
             //ürün ekliyoruz
             //Product product = new Product
@@ -88,8 +91,6 @@ namespace ConsoleUI
             //};
             //productManager.Add(product);
             //Listele();
-
-
         }
     }
 }
