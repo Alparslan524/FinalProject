@@ -1,7 +1,7 @@
 # FinalProject
 
 ## Proje Amacı
-[Kodlama.io](https://www.kodlama.io) sitesinden katıldığım [kampın](https://www.kodlama.io/courses/enrolled/1235979) kodlarının bir kısmını içermektedir.
+[Kodlama.io](https://www.kodlama.io) sitesinden katıldığım [kampın](https://www.kodlama.io/courses/enrolled/1235979) kodlarını içermektedir.
 *** 
 ## Kullanılan Diller
 * C#
