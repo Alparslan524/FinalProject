@@ -30,6 +30,7 @@ namespace WebAPI
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddControllers();
+            //IOC container
             services.AddSingleton<IProductServices,ProductManager>();
             services.AddSingleton<IProductDal, EfProductDal>();
         }
