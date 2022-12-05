@@ -33,6 +33,10 @@ namespace WebAPI
             //IOC container
             services.AddSingleton<IProductServices,ProductManager>();
             services.AddSingleton<IProductDal, EfProductDal>();
+
+            services.AddSingleton<ICategoryServices, CategoryManager>();
+            services.AddSingleton<ICategoryDal, EfCategoryDal>();
+
             services.AddCors();
         
         

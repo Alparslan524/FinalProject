@@ -17,5 +17,7 @@ namespace Business.Constants
         public static string ProductDetailListed = "Ürün Detayları Listelendi";
         public static string ListedById = "ID'ye Göre Listelendi";
         public static string MaintenanceTime = "Mesai Saatleri Dışı. Daha Sonra deneyiniz";
+
+        public static string CategoryListed = "Kategori Listelendi";
     }
 }
