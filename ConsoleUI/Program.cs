@@ -13,20 +13,20 @@ namespace ConsoleUI
 
             ProductManager productManager = new ProductManager(new EfProductDal());
 
-            var result = productManager.GetAll();
-            if (result.Success==true)
-            {
-                foreach (var p in productManager.GetAll().Data)
-                {
-                    Console.WriteLine("Ürün Adı: " + p.ProductName + "\n" + "Ürün Fiyatı: " + p.UnitPrice +
-                    "\n" + "Ürün Stoğu: " + p.UnitsInStock + "\n" + "******************");
-                }
-                Console.WriteLine(result.Message);
-            }
-            else
-            {
-                Console.WriteLine(result.Message);
-            }
+            //var result = productManager.GetAll();
+            //if (result.Success==true)
+            //{
+            //    foreach (var p in productManager.GetAll().Data)
+            //    {
+            //        Console.WriteLine("Ürün Adı: " + p.ProductName + "\n" + "Ürün Fiyatı: " + p.UnitPrice +
+            //        "\n" + "Ürün Stoğu: " + p.UnitsInStock + "\n" + "******************");
+            //    }
+            //    Console.WriteLine(result.Message);
+            //}
+            //else
+            //{
+            //    Console.WriteLine(result.Message);
+            //}
 
 
             
@@ -52,36 +52,45 @@ namespace ConsoleUI
             };
             //UrunListeleGetAllUnitPrice(50,100);
 
-            void UrunListeleGetAllByCategoryId(int id)
-            {
-                foreach (var p in productManager.GetAllByCategoryId(id).Data)
-                {
-                    Console.WriteLine("Ürün Adı: " + p.ProductName + "\n" + "Ürün Fiyatı: " + p.UnitPrice +
-                    "\n" + "Ürün Stoğu: " + p.UnitsInStock + "\n" + "******************");
-                }
-            };
-            //UrunListeleGetAllByCategoryId(2);
+            //void UrunListeleGetAllByCategoryId(int id)
+            //{
+            //    var result = productManager.GetAll();
+            //    if (result.Success == true)
+            //    {
+            //        foreach (var p in productManager.GetAllByCategoryId(id).Data)
+            //        {
+            //            Console.WriteLine("Ürün Adı: " + p.ProductName + "\n" + "Ürün Fiyatı: " + p.UnitPrice +
+            //            "\n" + "Ürün Stoğu: " + p.UnitsInStock + "\n" + "******************");
+            //        }
+            //        Console.WriteLine(result.Message);
+            //    }
+            //    else
+            //    {
+            //        Console.WriteLine(result.Message);
+            //    }
+            //};
+            //UrunListeleGetAllByCategoryId(1);
 
-            CategoryManager categoryManager = new CategoryManager(new EfCategoryDal());
-            void CategoryListele()
-            {
-                foreach (var c in categoryManager.GetAll())
-                {
-                    Console.WriteLine("Category Adı: " + c.CategoryName);
-                }
-            };
+            //CategoryManager categoryManager = new CategoryManager(new EfCategoryDal());
+            //void CategoryListele()
+            //{
+            //    foreach (var c in categoryManager.GetAll())
+            //    {
+            //        Console.WriteLine("Category Adı: " + c.CategoryName);
+            //    }
+            //};
             //CategoryListele();
 
-            void UrunListe2leGetAll()
-            {
-                foreach (var p in productManager.GetProductDetailDtos().Data)
-                {
-                    Console.WriteLine("Ürün Adı: " + p.ProductName +"\n" 
-                        + "Category İsmi: " + p.CategoryName + "\n" + "******************");//Sadece DTO ya eklediklerimizi yazabildik
-                                                                                            //yani productıd-productname-categoryname-unitinstock yazabiliriz.
-                                                                                            //çünkü .GetProductDetailDtos çağırdık
-                }
-            };
+            //void UrunListe2leGetAll()
+            //{
+            //    foreach (var p in productManager.GetProductDetailDtos().Data)
+            //    {
+            //        Console.WriteLine("Ürün Adı: " + p.ProductName +"\n" 
+            //            + "Category İsmi: " + p.CategoryName + "\n" + "******************");//Sadece DTO ya eklediklerimizi yazabildik
+            //                                                                                //yani productıd-productname-categoryname-unitinstock yazabiliriz.
+            //                                                                                //çünkü .GetProductDetailDtos çağırdık
+            //    }
+            //};
             //UrunListe2leGetAll();
 
             //ürün ekliyoruz
