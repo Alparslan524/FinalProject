@@ -7,17 +7,17 @@ namespace Business.Constants
 {
     public static class Messages
     {
-        public static string ProductAdded = "Ürün Eklendi";
-        public static string ProductNameInvalid = "Ürün İsmi Geçersiz";
-        public static string ProductDeleted = "Ürün Silindi";
-        public static string ProductUpdated = "Ürün Güncellendi";
-        public static string ProductListed = "Ürünler Listelendi";
-        public static string ListedByCategoryID = "Kategoriye Göre Listelendi";
-        public static string ListedByUnitPrice = "Fiyat Aralığına Göre Listelendi";
-        public static string ProductDetailListed = "Ürün Detayları Listelendi";
-        public static string ListedById = "ID'ye Göre Listelendi";
-        public static string MaintenanceTime = "Mesai Saatleri Dışı. Daha Sonra deneyiniz";
+        public static string ProductAdded = "Product Added";
+        public static string ProductNameInvalid = "Product Name is Invalid";
+        public static string ProductDeleted = "Product Deleted";
+        public static string ProductUpdated = "Product Updated";
+        public static string ProductListed = "Products Listed";
+        public static string ListedByCategoryID = "Listed By Category";
+        public static string ListedByUnitPrice = "Listed By Price Range";
+        public static string ProductDetailListed = "Product Detail Listed";
+        public static string ListedById = "Listed By ID";
+        public static string MaintenanceTime = "Out of Business Hours. Try later";
 
-        public static string CategoryListed = "Kategori Listelendi";
+        public static string CategoryListed = "Category Listed";
     }
 }
