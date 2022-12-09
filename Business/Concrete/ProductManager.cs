@@ -45,7 +45,7 @@ namespace Business.Concrete
         public IDataResult<List<Product>> GetAll()
         {
             //Kodlar--Gereksinimleri sağlıyorsa listeleyecek. Mesela Ürünün fiyatı 50tl altındaysa burda listeleyecek
-            if (DateTime.Now.Hour==1)//Görmek için bu değeri veridk
+            if (DateTime.Now.Hour==5)//Görmek için bu değeri veridk
             {
                 return new ErrorDataResult<List<Product>>(Messages.MaintenanceTime);
             }
