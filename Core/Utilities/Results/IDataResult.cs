@@ -4,9 +4,8 @@ using System.Text;
 
 namespace Core.Utilities.Results
 {
-    public interface IDataResult<T> : IResult
+    public interface IDataResult<out T>:IResult
     {
-        //success ve result IResulttan geliyor ve ek olarak Data var
         T Data { get; }
     }
 }

@@ -1,4 +1,5 @@
-﻿using DataAccess.Abstract;
+﻿using Core.DataAccess;
+using DataAccess.Abstract;
 using Entities.Concrete;
 using Entities.DTOs;
 using System;
@@ -75,6 +76,11 @@ namespace DataAccess.Concrete.InMemory
         }
 
         public List<ProductDetailDto> GetProductDetailDtos()
+        {
+            throw new NotImplementedException();
+        }
+
+        IList<Product> IEntityRepository<Product>.GetAll(Expression<Func<Product, bool>> filter)
         {
             throw new NotImplementedException();
         }

@@ -5,6 +5,7 @@ using DataAccess.Abstract;
 using Entities.Concrete;
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Text;
 
 namespace Business.Concrete
@@ -19,7 +20,7 @@ namespace Business.Concrete
 
         public IDataResult<List<Category>> GetAll()
         {
-            return new SuccessDataResult<List<Category>>(_categoryDal.GetAll(), Messages.CategoryListed);
+            return new SuccessDataResult<List<Category>>(_categoryDal.GetAll().ToList(), Messages.CategoryListed);
         }
 
         public IDataResult<Category> GetById(int categoryId)

@@ -6,6 +6,7 @@ using Entities.Concrete;
 using Entities.DTOs;
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Text;
 
 namespace Business.Concrete
@@ -50,16 +51,16 @@ namespace Business.Concrete
                 return new ErrorDataResult<List<Product>>(Messages.MaintenanceTime);
             }
             
-            return new SuccessDataResult<List<Product>>(_productDal.GetAll(),Messages.ProductListed);
+            return new SuccessDataResult<List<Product>>(_productDal.GetAll().ToList(), Messages.ProductListed);
         }
         public IDataResult<List<Product>> GetAllByCategoryId(int id)
         {
-            return new SuccessDataResult<List<Product>>(_productDal.GetAll(p=>p.CategoryID==id),Messages.ListedByCategoryID);
+            return new SuccessDataResult<List<Product>>(_productDal.GetAll(p=>p.CategoryID==id).ToList(), Messages.ListedByCategoryID);
         }
 
         public IDataResult<List<Product>> GetAllUnitPrice(decimal min, decimal max)
         {
-            return new SuccessDataResult<List<Product>>(_productDal.GetAll(p=>p.UnitPrice>=min && p.UnitPrice<=max),Messages.ListedByUnitPrice);
+            return new SuccessDataResult<List<Product>>(_productDal.GetAll(p=>p.UnitPrice>=min && p.UnitPrice<=max).ToList(), Messages.ListedByUnitPrice);
         }
 
         public IDataResult<List<ProductDetailDto>> GetProductDetailDtos()
