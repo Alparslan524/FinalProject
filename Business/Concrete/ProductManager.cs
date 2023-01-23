@@ -1,5 +1,6 @@
 ﻿using Business.Abstract;
 using Business.Constants;
+using Bussines.BussinessAspects.Autofac;
 using Core.Utilities.Results;
 using DataAccess.Abstract;
 using Entities.Concrete;
@@ -18,6 +19,8 @@ namespace Business.Concrete
         {
             _productDal = productDal;
         }
+        
+        [SecuredOperation("admin")]
         public IResult Add(Product product)
         {
             if (product.ProductName.Length<2)
@@ -29,12 +32,14 @@ namespace Business.Concrete
             //return new SuccessResult(); true döndürür
         }
 
+        [SecuredOperation("admin")]
         public IResult Delete(Product product)
         {
             _productDal.Delete(product);
             return new SuccessResult(Messages.ProductDeleted);
         }
 
+        [SecuredOperation("admin")]
         public IResult Update(Product product)
         {
             _productDal.Update(product);
